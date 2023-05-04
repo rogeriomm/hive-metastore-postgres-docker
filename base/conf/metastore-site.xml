@@ -1,0 +1,5 @@
+<configuration>
+<property><name>metastore.thrift.uris</name><value>thrift://0.0.0.0:9083</value></property>
+<property><name>metastore.task.threads.always</name><value>org.apache.hadoop.hive.metastore.events.EventCleanerTask,org.apache.hadoop.hive.metastore.MaterializationsCacheCleanerTask</value></property>
+<property><name>metastore.expression.proxy</name><value>org.apache.hadoop.hive.metastore.DefaultPartitionExpressionProxy</value></property>
+</configuration>
