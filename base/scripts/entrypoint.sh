@@ -37,7 +37,11 @@ export JAVA_HOME=/usr/local/openjdk-8
 
 configure "$HIVE_HOME"/conf/metastore-site.xml "Hive metastore" HIVE_SITE_CONF
 
-update-ca-certificates
+if [ -n "$CA_CERTIFICATE_FILE" ]; then
+  cp "$CA_CERTIFICATE_FILE" /usr/local/share/ca-certificates/
+  update-ca-certificates
+  #rm -f /usr/local/share/ca-certificates/*
+fi
 
 # shellcheck disable=SC2154
 DB_HOST=$(echo "$HIVE_SITE_CONF_javax_jdo_option_ConnectionURL" | awk -F/ '{print $3}' | awk -F: '{print $1}')
